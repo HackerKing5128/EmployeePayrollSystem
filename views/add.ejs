@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Add Employee</title>
     <link rel="stylesheet" href="/add.css">
-    <title>Employee Payroll Form</title>
 </head>
 <body>
 
@@ -11,225 +11,123 @@
 
     <form action="/add" method="POST">
 
+        <!-- Name -->
         <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="name" required />
+            <label>Name *</label>
+            <input type="text" name="name" required>
         </div>
 
+        <!-- Profile Image -->
         <div class="form-group">
-            <label>Profile Image</label>
+            <label>Profile Image *</label>
             <div class="profile-images">
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="1.png" required>
-                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face');"></div>
                 </label>
+
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="2.png">
-                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face');"></div>
                 </label>
+
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="3.png">
-                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face');"></div>
                 </label>
+
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="4.png">
-                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face');"></div>
                 </label>
             </div>
         </div>
 
+        <!-- Gender -->
         <div class="form-group">
-            <label>Gender</label>
+            <label>Gender *</label>
             <div class="radio-group">
                 <label><input type="radio" name="gender" value="Male" required> Male</label>
                 <label><input type="radio" name="gender" value="Female"> Female</label>
             </div>
         </div>
 
+        <!-- Department -->
         <div class="form-group">
-            <label>Department</label>
+            <label>Department *</label>
             <div class="checkbox-group">
                 <label><input type="checkbox" name="department" value="HR"> HR</label>
                 <label><input type="checkbox" name="department" value="Sales"> Sales</label>
                 <label><input type="checkbox" name="department" value="Finance"> Finance</label>
-                <label><input type="checkbox" name="department" value="Engineer"> Engineer</label>
+                <label><input type="checkbox" name="department" value="Engineering"> Engineering</label>
                 <label><input type="checkbox" name="department" value="Others"> Others</label>
             </div>
         </div>
 
+        <!-- Salary -->
         <div class="form-group">
-            <label>Salary</label>
+            <label>Basic Salary (₹) *</label>
             <select name="salary" required>
                 <option value="">Select Salary</option>
                 <option value="30000">30000</option>
                 <option value="40000">40000</option>
                 <option value="50000">50000</option>
                 <option value="60000">60000</option>
-    <title>Add Employee</title>
-    <link rel="stylesheet" href="/dashboard.css">
-    <style>
-        .form-container {
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .form-container h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #4CAF50;
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .form-actions button,
-        .form-actions a {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .form-actions button {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .form-actions button:hover {
-            background-color: #45a049;
-        }
-
-        .form-actions a {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-        .form-actions a:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
-</head>
-<body>
-
-<div class="form-container">
-    <h1>Add New Employee</h1>
-    <form method="POST" action="/add">
-        <div class="form-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-
-        <div class="form-group">
-            <label for="gender">Gender *</label>
-            <select id="gender" name="gender" required>
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option value="70000">70000</option>
             </select>
         </div>
 
+        <!-- Start Date -->
         <div class="form-group">
-            <label>Start Date</label>
+            <label>Start Date *</label>
             <div class="radio-group">
                 <select name="day" required>
                     <option value="">Day</option>
-                    <% for(let i=1; i<=31; i++) { %>
+                    <% for(let i = 1; i <= 31; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                     <% } %>
                 </select>
 
                 <select name="month" required>
                     <option value="">Month</option>
-                    <option value="Jan">Jan</option>
-                    <option value="Feb">Feb</option>
-                    <option value="Mar">Mar</option>
-                    <option value="Apr">Apr</option>
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>Apr</option>
+                    <option>May</option>
+                    <option>Jun</option>
+                    <option>Jul</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
                 </select>
 
                 <select name="year" required>
                     <option value="">Year</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
                 </select>
             </div>
         </div>
 
+        <!-- Notes -->
         <div class="form-group">
             <label>Notes</label>
             <textarea name="notes"></textarea>
         </div>
 
+        <!-- Buttons -->
         <div class="button-group">
-            <button type="button" class="cancel-btn">Cancel</button>
+            <a href="/" class="cancel-btn">Cancel</a>
             <button type="submit" class="submit-btn">Submit</button>
             <button type="reset" class="reset-btn">Reset</button>
         </div>
 
-            <label for="department">Department *</label>
-            <select id="department" name="department" required>
-                <option value="">Select Department</option>
-                <option value="HR">HR</option>
-                <option value="Engineering">Engineering</option>
-                <option value="Sales">Sales</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Finance">Finance</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="basicSalary">Basic Salary (₹) *</label>
-            <input type="number" id="basicSalary" name="basicSalary" min="0" step="100" required>
-        </div>
-
-        <div class="form-actions">
-            <button type="submit">Add Employee</button>
-            <a href="/">Cancel</a>
-        </div>
     </form>
 </div>
 
 </body>
-
 </html>

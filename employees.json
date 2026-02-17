@@ -1,11 +1,15 @@
-
 [
   {
-    "id": 1700000000000,
-    "name": "Rohit Sharma",
+    "id": 1771322041143,
+    "name": "Kirito",
+    "profileImage": "4.png",
     "gender": "Male",
-    "department": ["HR"],
-    "basicSalary": 50000,
-    "tax": 6000,
-    "netSalary": 44000  }
+    "department": [
+      "Finance",
+      "Others"
+    ],
+    "basicSalary": 60000,
+    "startDate": "16-Nov-2023",
+    "notes": ""
+  }
 ]
