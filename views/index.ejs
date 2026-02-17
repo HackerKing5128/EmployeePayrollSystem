@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Payroll</title>
+    <link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+        <h1>Employee Details</h1>
+        <a href="/add" class="add-btn">+ Add User</a>
+    </div>
+
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Tax (12%)</th>
+                    <th>Net Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            <% if (employees.length === 0) { %>
+                <tr>
+                    <td colspan="7" class="no-data">No Employees Found</td>
+                </tr>
+            <% } %>
+
+            <% employees.forEach(emp => { %>
+                <tr>
+                    <td class="name-cell">
+                        <div class="avatar">
+                            <%= emp.name.charAt(0).toUpperCase() %>
+                        </div>
+                        <span><%= emp.name %></span>
+                    </td>
+
+                    <td>
+                        <span class="gender <%= emp.gender.toLowerCase() %>">
+                            <%= emp.gender %>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="badge">
+                            <%= emp.department %>
+                        </span>
+                    </td>
+
+                    <td>₹ <%= emp.basicSalary.toLocaleString() %></td>
+                    <td>₹ <%= emp.tax.toFixed(2) %></td>
+                    <td>₹ <%= emp.netSalary.toFixed(2) %></td>
+
+                    <td class="actions">
+                        <a href="/edit/<%= emp.id %>" class="edit">✏</a>
+                        <a href="/delete/<%= emp.id %>" class="delete">🗑</a>
+                    </td>
+                </tr>
+            <% }) %>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
