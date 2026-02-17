@@ -5,7 +5,7 @@
     "name": "Rohit Sharma",
     "gender": "Male",
     "department": ["HR"],
-    "basicSalary": 50000
-  }
+    "basicSalary": 50000,
+    "tax": 6000,
+    "netSalary": 44000  }
 ]
-
