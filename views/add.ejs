@@ -1,6 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="/add.css">
+    <title>Employee Payroll Form</title>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Employee Payroll Form</h2>
+
+    <form action="/add" method="POST">
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+        </div>
+
+        <div class="form-group">
+            <label>Profile Image</label>
+            <div class="profile-images">
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="1.png" required>
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                </label>
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="2.png">
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                </label>
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="3.png">
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                </label>
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="4.png">
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Department</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="department" value="HR"> HR</label>
+                <label><input type="checkbox" name="department" value="Sales"> Sales</label>
+                <label><input type="checkbox" name="department" value="Finance"> Finance</label>
+                <label><input type="checkbox" name="department" value="Engineer"> Engineer</label>
+                <label><input type="checkbox" name="department" value="Others"> Others</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            <select name="salary" required>
+                <option value="">Select Salary</option>
+                <option value="30000">30000</option>
+                <option value="40000">40000</option>
+                <option value="50000">50000</option>
+                <option value="60000">60000</option>
     <title>Add Employee</title>
     <link rel="stylesheet" href="/dashboard.css">
     <style>
@@ -107,6 +171,42 @@
         </div>
 
         <div class="form-group">
+            <label>Start Date</label>
+            <div class="radio-group">
+                <select name="day" required>
+                    <option value="">Day</option>
+                    <% for(let i=1; i<=31; i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                </select>
+
+                <select name="month" required>
+                    <option value="">Month</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                </select>
+
+                <select name="year" required>
+                    <option value="">Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea name="notes"></textarea>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="reset" class="reset-btn">Reset</button>
+        </div>
+
             <label for="department">Department *</label>
             <select id="department" name="department" required>
                 <option value="">Select Department</option>
@@ -131,4 +231,5 @@
 </div>
 
 </body>
+
 </html>

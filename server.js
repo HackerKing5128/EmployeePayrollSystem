@@ -8,7 +8,6 @@ const PORT = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
 app.set("view engine", "ejs");
 
 // Dashboard - Display all employees
@@ -104,6 +103,40 @@ app.post("/edit/:id", async (req, res) => {
   }
 });
 
+app.get('/add', (req, res) => {
+    res.render('add');
+});
+
+app.post('/add', async (req, res) => {
+    try {
+        const {
+            name,
+            profileImage,
+            gender,
+            department,
+            salary,
+            day,
+            month,
+            year,
+            notes
+        } = req.body;
+
+        if (!name || !profileImage || !gender || !salary || !day || !month || !year) {
+            return res.status(400).send("All required fields must be filled");
+        }
+
+        const employees = await readEmployees();
+
+        const newEmployee = {
+            id: Date.now(),
+            name: name.trim(),
+            profileImage,
+            gender,
+            department: Array.isArray(department) ? department : [department],
+            salary: Number(salary),
+            startDate: `${day}-${month}-${year}`,
+            notes: notes || ""
+        };
 // Delete Employee
 app.get("/delete/:id", async (req, res) => {
   try {
@@ -127,10 +160,20 @@ async function startServer() {
   console.log("Employee Data Loaded:");
   console.log(employees);
 
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
+        employees.push(newEmployee);
 
+        await writeEmployees(employees);
+
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
 startServer();
 

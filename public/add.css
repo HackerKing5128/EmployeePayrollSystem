@@ -1,0 +1,209 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 10px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.form-container {
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #95a5a6;
+    font-size: 13px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+textarea {
+    height: 60px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+    transform: scale(1.2);
+}
+
+/* Profile Images Styling */
+.profile-images {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-option {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 0 !important;
+}
+
+.profile-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.profile-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.profile-option input[type="radio"]:checked + .profile-avatar {
+    border-color: #3498db;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+.profile-option:hover .profile-avatar {
+    transform: scale(1.05);
+}
+
+/* Date selects styling */
+.form-group select[name="day"],
+.form-group select[name="month"],
+.form-group select[name="year"] {
+    width: calc(33.333% - 10px);
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.form-group select[name="year"] {
+    margin-right: 0;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.submit-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #219a52;
+    transform: translateY(-1px);
+}
+
+.reset-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-1px);
+}
+
+.cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
