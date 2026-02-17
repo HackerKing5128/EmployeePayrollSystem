@@ -1,36 +1,42 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #f4f6f8;
     margin: 0;
-    padding: 10px;
-    min-height: 100vh;
-    box-sizing: border-box;
-    overflow: hidden;
+    padding: 0;
+}
+
+.logo-header {
+    background: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logo-header svg {
+    display: block;
 }
 
 .form-container {
-    max-width: 550px;
-    width: 100%;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    margin: 30px auto;
+    background: #cbd5e0;
+    padding: 30px;
     border-radius: 8px;
-    color: #333;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    max-height: 95vh;
-    overflow-y: auto;
 }
 
 h2 {
     color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin-bottom: 25px;
+    margin-top: 0;
+    font-size: 24px;
     font-weight: 600;
+    text-align: center;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 label {
@@ -42,24 +48,27 @@ label {
 }
 
 input[type="text"],
+input[type="number"],
 select,
 textarea {
     width: 100%;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border-radius: 6px;
-    border: 1px solid #95a5a6;
-    font-size: 13px;
-    background-color: #ecf0f1;
+    border: 1px solid #cbd5e0;
+    font-size: 14px;
+    background-color: #fff;
     color: #2c3e50;
     box-sizing: border-box;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus,
+input[type="number"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 textarea {
@@ -73,7 +82,7 @@ textarea {
     display: flex;
     gap: 25px;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: balance;
 }
 
 .radio-group label,
@@ -151,38 +160,43 @@ select {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
     background-repeat: no-repeat;
-    background-color: #ecf0f1;
+    background-color: #fff;
     background-position: right 12px center;
     background-size: 12px;
-    padding-right: 40px;
+    padding-right: 35px;
 }
 
 .button-group {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
-    gap: 10px;
-    justify-content: space-between;
+    gap: 12px;
+    justify-content: center;
 }
 
-button {
-    padding: 8px 20px;
+button,
+.cancel-btn {
+    padding: 10px 24px;
     border-radius: 6px;
     border: none;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 80px;
+    transition: all 0.2s ease;
+    min-width: 100px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .submit-btn {
-    background-color: #27ae60;
+    background-color: #82b622;
     color: white;
 }
 
 .submit-btn:hover {
-    background-color: #219a52;
-    transform: translateY(-1px);
+    background-color: #6fa01c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(130, 182, 34, 0.3);
 }
 
 .reset-btn {
@@ -192,7 +206,8 @@ button {
 
 .reset-btn:hover {
     background-color: #7f8c8d;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(149, 165, 166, 0.3);
 }
 
 .cancel-btn {
@@ -202,7 +217,8 @@ button {
 
 .cancel-btn:hover {
     background-color: #c0392b;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
 }
 
 button:active {

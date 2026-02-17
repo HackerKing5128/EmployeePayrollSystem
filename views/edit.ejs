@@ -6,16 +6,54 @@
 </head>
 <body>
 
+<div class="logo-header">
+    <svg width="180" height="80" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 60V190H220V165H135V135H200V110H135V85H220V60H100Z" fill="#1A365D"/>
+      <path d="M230 60H300M230 85H300M290 60C290 60 305 125 240 125M255 125L300 190" stroke="#38B2AC" stroke-width="22" stroke-linecap="square"/>
+      <text x="200" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="1" fill="#1A365D">
+        EMPLOYEE <tspan fill="#38B2AC">PAYROLL</tspan>
+      </text>
+    </svg>
+</div>
+
 <div class="form-container">
     <h2>Edit Employee</h2>
 
     <form method="POST" action="/edit/<%= employee.id %>">
 
+        <!-- Name -->
         <div class="form-group">
             <label>Name *</label>
             <input type="text" name="name" value="<%= employee.name %>" required>
         </div>
 
+        <!-- Profile Image -->
+        <div class="form-group">
+            <label>Profile Image *</label>
+            <div class="profile-images">
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="1.png" <%= employee.profileImage === '1.png' ? 'checked' : '' %> required>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face');"></div>
+                </label>
+
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="2.png" <%= employee.profileImage === '2.png' ? 'checked' : '' %>>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face');"></div>
+                </label>
+
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="3.png" <%= employee.profileImage === '3.png' ? 'checked' : '' %>>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face');"></div>
+                </label>
+
+                <label class="profile-option">
+                    <input type="radio" name="profileImage" value="4.png" <%= employee.profileImage === '4.png' ? 'checked' : '' %>>
+                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face');"></div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Gender -->
         <div class="form-group">
             <label>Gender *</label>
             <div class="radio-group">
@@ -30,22 +68,65 @@
             </div>
         </div>
 
+        <!-- Department -->
         <div class="form-group">
             <label>Department *</label>
-            <select name="department" required>
-                <option value="HR" <%= employee.department.includes('HR') ? 'selected' : '' %>>HR</option>
-                <option value="Sales" <%= employee.department.includes('Sales') ? 'selected' : '' %>>Sales</option>
-                <option value="Finance" <%= employee.department.includes('Finance') ? 'selected' : '' %>>Finance</option>
-                <option value="Engineering" <%= employee.department.includes('Engineering') ? 'selected' : '' %>>Engineering</option>
-                <option value="Others" <%= employee.department.includes('Others') ? 'selected' : '' %>>Others</option>
-            </select>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="department" value="HR" <%= employee.department.includes('HR') ? 'checked' : '' %>> HR</label>
+                <label><input type="checkbox" name="department" value="Sales" <%= employee.department.includes('Sales') ? 'checked' : '' %>> Sales</label>
+                <label><input type="checkbox" name="department" value="Finance" <%= employee.department.includes('Finance') ? 'checked' : '' %>> Finance</label>
+                <label><input type="checkbox" name="department" value="Engineering" <%= employee.department.includes('Engineering') ? 'checked' : '' %>> Engineering</label>
+                <label><input type="checkbox" name="department" value="Others" <%= employee.department.includes('Others') ? 'checked' : '' %>> Others</label>
+            </div>
         </div>
 
+        <!-- Salary -->
         <div class="form-group">
             <label>Basic Salary (₹) *</label>
-            <input type="number" name="basicSalary" value="<%= employee.basicSalary %>" min="0" required>
+            <input type="number" name="salary" value="<%= employee.basicSalary %>" min="0" placeholder="Enter salary" required>
         </div>
 
+        <!-- Start Date -->
+        <%
+            const dateParts = employee.startDate ? employee.startDate.split('-') : ['', '', ''];
+            const day = dateParts[0] || '';
+            const month = dateParts[1] || '';
+            const year = dateParts[2] || '';
+        %>
+        <div class="form-group">
+            <label>Start Date *</label>
+            <div class="radio-group">
+                <select name="day" required>
+                    <option value="">Day</option>
+                    <% for(let i = 1; i <= 31; i++) { %>
+                        <option value="<%= i %>" <%= day == i ? 'selected' : '' %>><%= i %></option>
+                    <% } %>
+                </select>
+
+                <select name="month" required>
+                    <option value="">Month</option>
+                    <% const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; %>
+                    <% months.forEach(m => { %>
+                        <option value="<%= m %>" <%= month === m ? 'selected' : '' %>><%= m %></option>
+                    <% }) %>
+                </select>
+
+                <select name="year" required>
+                    <option value="">Year</option>
+                    <% for(let y = 2020; y <= 2026; y++) { %>
+                        <option value="<%= y %>" <%= year == y ? 'selected' : '' %>><%= y %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea name="notes"><%= employee.notes || '' %></textarea>
+        </div>
+
+        <!-- Buttons -->
         <div class="button-group">
             <a href="/" class="cancel-btn">Cancel</a>
             <button type="submit" class="submit-btn">Update</button>

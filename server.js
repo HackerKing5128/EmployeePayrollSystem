@@ -94,9 +94,19 @@ app.get("/edit/:id", async (req, res) => {
 app.post("/edit/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const { name, gender, department, basicSalary } = req.body;
+    const { 
+      name, 
+      profileImage, 
+      gender, 
+      department, 
+      salary, 
+      day, 
+      month, 
+      year, 
+      notes 
+    } = req.body;
 
-    if (!name || Number(basicSalary) < 0) {
+    if (!name || Number(salary) < 0) {
       return res.status(400).send("Invalid input");
     }
 
@@ -106,10 +116,13 @@ app.post("/edit/:id", async (req, res) => {
       if (emp.id === id) {
         return {
           ...emp,
-          name,
+          name: name.trim(),
+          profileImage,
           gender,
-          department: [department],
-          basicSalary: Number(basicSalary)
+          department: Array.isArray(department) ? department : [department],
+          basicSalary: Number(salary),
+          startDate: `${day}-${month}-${year}`,
+          notes: notes || ""
         };
       }
       return emp;

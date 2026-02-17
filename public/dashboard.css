@@ -4,9 +4,19 @@ body {
     margin: 0;
 }
 
+.logo-header {
+    background: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logo-header svg {
+    display: block;
+}
+
 .container {
     width: 90%;
-    margin: 40px auto;
+    margin: 20px auto;
 }
 
 .top-bar {
@@ -14,6 +24,38 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.top-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #82b622;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    pointer-events: none;
 }
 
 .add-btn {
@@ -66,6 +108,32 @@ tr:nth-child(even) {
     justify-content: center;
     font-weight: bold;
     margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.avatar-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.department-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dept-badge {
+    background: #d8f0a6;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .badge {
@@ -90,10 +158,38 @@ tr:nth-child(even) {
     background: #e84393;
 }
 
-.actions a {
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
     text-decoration: none;
-    margin-right: 8px;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.edit-btn {
+    color: #3498db;
+    background: #e3f2fd;
+}
+
+.edit-btn:hover {
+    background: #bbdefb;
+    transform: scale(1.1);
+}
+
+.delete-btn {
+    color: #e74c3c;
+    background: #ffebee;
+}
+
+.delete-btn:hover {
+    background: #ffcdd2;
+    transform: scale(1.1);
 }
 
 .edit {
