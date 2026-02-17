@@ -5,24 +5,7 @@
     "name": "Rohit Sharma",
     "gender": "Male",
     "department": ["HR"],
-    "basicSalary": 50000
-  },
-  {
-    "id": 1771308073507,
-    "name": "Brajdeep",
-    "department": "Pistol lover",
-    "salary": 100000000000000000
-  },
-  {
-    "id": 1771309272553,
-    "name": "Brajdeep",
-    "profileImage": "2.png",
-    "gender": "Male",
-    "department": [
-      "Others"
-    ],
-    "salary": 60000,
-    "startDate": "18-Mar-2024",
-    "notes": "kaam kero "
-  }
+    "basicSalary": 50000,
+    "tax": 6000,
+    "netSalary": 44000  }
 ]
