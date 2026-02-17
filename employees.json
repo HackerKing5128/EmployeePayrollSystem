@@ -1,8 +1,11 @@
+
 [
   {
     "id": 1700000000000,
     "name": "Rohit Sharma",
-    "department": "HR",
+    "gender": "Male",
+    "department": ["HR"],
     "basicSalary": 50000
   }
 ]
+
