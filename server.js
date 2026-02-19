@@ -29,17 +29,26 @@ app.get("/add", (req, res) => {
 // Add New Employee
 app.post("/add", async (req, res) => {
   try {
-    const { name, gender, department, basicSalary } = req.body;
+    const { name, profileImage, gender, department, salary, day, month, year, notes } = req.body;
+    
+    if (!name || !gender || !salary || !day || !month || !year) {
+      return res.status(400).send("All required fields must be filled");
+    }
+    
     const employees = await readEmployees();
     
     const newEmployee = {
       id: Date.now(),
-      name,
+      name: name.trim(),
+      profileImage: profileImage || '1.png',
       gender,
-      department: [department],
-      basicSalary: Number(basicSalary),
-      tax: Number(basicSalary) * 0.12,
-      netSalary: Number(basicSalary) * 0.88
+      department: Array.isArray(department) ? department : [department],
+      salary: Number(salary),
+      basicSalary: Number(salary),
+      tax: Number(salary) * 0.12,
+      netSalary: Number(salary) * 0.88,
+      startDate: `${day}-${month}-${year}`,
+      notes: notes || ""
     };
     
     employees.push(newEmployee);
@@ -86,6 +95,7 @@ app.post("/edit/:id", async (req, res) => {
           name,
           gender,
           department: [department],
+          salary: Number(basicSalary),
           basicSalary: Number(basicSalary),
           tax: Number(basicSalary) * 0.12,
           netSalary: Number(basicSalary) * 0.88
@@ -103,40 +113,6 @@ app.post("/edit/:id", async (req, res) => {
   }
 });
 
-app.get('/add', (req, res) => {
-    res.render('add');
-});
-
-app.post('/add', async (req, res) => {
-    try {
-        const {
-            name,
-            profileImage,
-            gender,
-            department,
-            salary,
-            day,
-            month,
-            year,
-            notes
-        } = req.body;
-
-        if (!name || !profileImage || !gender || !salary || !day || !month || !year) {
-            return res.status(400).send("All required fields must be filled");
-        }
-
-        const employees = await readEmployees();
-
-        const newEmployee = {
-            id: Date.now(),
-            name: name.trim(),
-            profileImage,
-            gender,
-            department: Array.isArray(department) ? department : [department],
-            salary: Number(salary),
-            startDate: `${day}-${month}-${year}`,
-            notes: notes || ""
-        };
 // Delete Employee
 app.get("/delete/:id", async (req, res) => {
   try {
@@ -159,17 +135,7 @@ async function startServer() {
   const employees = await readEmployees();
   console.log("Employee Data Loaded:");
   console.log(employees);
-
-        employees.push(newEmployee);
-
-        await writeEmployees(employees);
-
-        res.redirect('/');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Server Error");
-    }
-});
+}
 
 
 app.listen(PORT, () => {

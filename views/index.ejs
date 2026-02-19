@@ -3,6 +3,27 @@
 <head>
     <title>Employee Payroll</title>
     <link rel="stylesheet" href="/dashboard.css">
+    <style>
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            border: 2px solid #ddd;
+        }
+        
+        .name-cell {
+            display: flex;
+            align-items: center;
+        }
+        
+        .badge {
+            margin-right: 5px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,9 +59,22 @@
             <% employees.forEach(emp => { %>
                 <tr>
                     <td class="name-cell">
-                        <div class="avatar">
-                            <%= emp.name.charAt(0).toUpperCase() %>
-                        </div>
+                        <% if (emp.profileImage) { %>
+                            <% 
+                                const imageUrls = {
+                                    '1.png': 'https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face',
+                                    '2.png': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+                                    '3.png': 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+                                    '4.png': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+                                };
+                                const profileUrl = imageUrls[emp.profileImage] || imageUrls['1.png'];
+                            %>
+                            <div class="profile-avatar" style="background: url('<%= profileUrl %>') center/cover;"></div>
+                        <% } else { %>
+                            <div class="avatar">
+                                <%= emp.name.charAt(0).toUpperCase() %>
+                            </div>
+                        <% } %>
                         <span><%= emp.name %></span>
                     </td>
 
@@ -51,12 +85,16 @@
                     </td>
 
                     <td>
-                        <span class="badge">
-                            <%= emp.department %>
-                        </span>
+                        <% if (Array.isArray(emp.department)) { %>
+                            <% emp.department.forEach(dept => { %>
+                                <span class="badge"><%= dept %></span>
+                            <% }) %>
+                        <% } else { %>
+                            <span class="badge"><%= emp.department %></span>
+                        <% } %>
                     </td>
 
-                    <td>₹ <%= emp.basicSalary.toLocaleString() %></td>
+                    <td>₹ <%= (emp.salary || emp.basicSalary).toLocaleString() %></td>
                     <td>₹ <%= emp.tax.toFixed(2) %></td>
                     <td>₹ <%= emp.netSalary.toFixed(2) %></td>
 

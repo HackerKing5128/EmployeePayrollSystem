@@ -1,11 +1,31 @@
-
 [
   {
     "id": 1700000000000,
     "name": "Rohit Sharma",
+    "profileImage": "2.png",
     "gender": "Male",
-    "department": ["HR"],
+    "department": [
+      "HR"
+    ],
+    "salary": 50000,
     "basicSalary": 50000,
     "tax": 6000,
-    "netSalary": 44000  }
+    "netSalary": 44000,
+    "startDate": "15-Sep-2023"
+  },
+  {
+    "id": 1771478287537,
+    "name": "Brajdeep pistol lover",
+    "profileImage": "3.png",
+    "gender": "Female",
+    "department": [
+      "Others"
+    ],
+    "salary": 100000,
+    "basicSalary": 100000,
+    "tax": 12000,
+    "netSalary": 88000,
+    "startDate": "16-Sep-2022",
+    "notes": "sfjnsjdn"
+  }
 ]
