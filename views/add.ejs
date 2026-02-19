@@ -1,148 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/add.css">
     <title>Employee Payroll Form</title>
-    <style>
-        .form-container {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .form-container h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #4CAF50;
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
-        }
-
-        .profile-images {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .profile-option {
-            cursor: pointer;
-        }
-
-        .profile-option input[type="radio"] {
-            display: none;
-        }
-
-        .profile-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 3px solid #ddd;
-            transition: border-color 0.3s;
-        }
-
-        .profile-option input[type="radio"]:checked + .profile-avatar {
-            border-color: #4CAF50;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 20px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .date-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .date-group select {
-            flex: 1;
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .form-actions button,
-        .form-actions a {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .submit-btn:hover {
-            background-color: #45a049;
-        }
-
-        .reset-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .reset-btn:hover {
-            background-color: #da190b;
-        }
-
-        .cancel-btn {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-        .cancel-btn:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
+    <link rel="stylesheet" href="/add.css">
 </head>
 <body>
 
@@ -151,26 +11,31 @@
 
     <form action="/add" method="POST">
 
+        <!-- Name -->
         <div class="form-group">
             <label>Name *</label>
-            <input type="text" name="name" required />
+            <input type="text" name="name" required>
         </div>
 
+        <!-- Profile Image -->
         <div class="form-group">
-            <label>Profile Image</label>
+            <label>Profile Image *</label>
             <div class="profile-images">
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="1.png" required>
                     <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
+
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="2.png">
                     <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
+
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="3.png">
                     <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
+
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="4.png">
                     <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
@@ -178,6 +43,7 @@
             </div>
         </div>
 
+        <!-- Gender -->
         <div class="form-group">
             <label>Gender *</label>
             <div class="radio-group">
@@ -186,71 +52,71 @@
             </div>
         </div>
 
+        <!-- Department -->
         <div class="form-group">
-            <label>Department</label>
+            <label>Department *</label>
             <div class="checkbox-group">
                 <label><input type="checkbox" name="department" value="HR"> HR</label>
                 <label><input type="checkbox" name="department" value="Sales"> Sales</label>
                 <label><input type="checkbox" name="department" value="Finance"> Finance</label>
-                <label><input type="checkbox" name="department" value="Engineer"> Engineer</label>
+                <label><input type="checkbox" name="department" value="Engineering"> Engineering</label>
                 <label><input type="checkbox" name="department" value="Others"> Others</label>
             </div>
         </div>
 
+        <!-- Salary -->
         <div class="form-group">
             <label>Salary *</label>
-            <input type="number" name="salary" placeholder="Enter salary amount" min="0" step="1000" required />
+            <input type="number" name="salary" placeholder="Enter salary amount" min="0" step="1000" required>
         </div>
 
+        <!-- Start Date -->
         <div class="form-group">
             <label>Start Date *</label>
-            <div class="date-group">
-                <select name="day" required>
-                    <option value="">Day</option>
-                    <% for(let i=1; i<=31; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                    <% } %>
-                </select>
+            <select name="day" required>
+                <option value="">Day</option>
+                <% for(let i = 1; i <= 31; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
 
-                <select name="month" required>
-                    <option value="">Month</option>
-                    <option value="Jan">Jan</option>
-                    <option value="Feb">Feb</option>
-                    <option value="Mar">Mar</option>
-                    <option value="Apr">Apr</option>
-                    <option value="May">May</option>
-                    <option value="Jun">Jun</option>
-                    <option value="Jul">Jul</option>
-                    <option value="Aug">Aug</option>
-                    <option value="Sep">Sep</option>
-                    <option value="Oct">Oct</option>
-                    <option value="Nov">Nov</option>
-                    <option value="Dec">Dec</option>
-                </select>
+            <select name="month" required>
+                <option value="">Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="Jun">Jun</option>
+                <option value="Jul">Jul</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+            </select>
 
-                <select name="year" required>
-                    <option value="">Year</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                </select>
-            </div>
+            <select name="year" required>
+                <option value="">Year</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+            </select>
         </div>
 
+        <!-- Notes -->
         <div class="form-group">
             <label>Notes</label>
             <textarea name="notes" rows="3" placeholder="Additional notes about the employee..."></textarea>
         </div>
 
-        <div class="form-actions">
+        <div class="button-group">
             <button type="button" class="cancel-btn" onclick="window.location.href='/'">Cancel</button>
             <button type="reset" class="reset-btn">Reset</button>
             <button type="submit" class="submit-btn">Submit</button>
         </div>
+
     </form>
 </div>
 

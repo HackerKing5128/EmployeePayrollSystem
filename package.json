@@ -2,7 +2,7 @@
   "name": "employeepayrollsystem",
   "version": "1.0.0",
   "description": "BridgeLabz Full Stack Backend in Node.js mini project",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },

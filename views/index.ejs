@@ -44,6 +44,7 @@
                     <th>Salary</th>
                     <th>Tax (12%)</th>
                     <th>Net Salary</th>
+                    <th>Start Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -52,58 +53,74 @@
 
             <% if (employees.length === 0) { %>
                 <tr>
-                    <td colspan="7" class="no-data">No Employees Found</td>
+                    <td colspan="8" class="no-data">No Employees Found</td>
                 </tr>
+            <% } else { %>
+
+                <% employees.forEach(emp => { %>
+                    <tr>
+
+                        <!-- Name + Avatar -->
+                        <td class="name-cell">
+                            <% if (emp.profileImage) { %>
+                                <% 
+                                    const imageUrls = {
+                                        '1.png': 'https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face',
+                                        '2.png': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+                                        '3.png': 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+                                        '4.png': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+                                    };
+                                    const profileUrl = imageUrls[emp.profileImage] || imageUrls['1.png'];
+                                %>
+                                <div class="profile-avatar" style="background: url('<%= profileUrl %>') center/cover;"></div>
+                            <% } else { %>
+                                <div class="avatar">
+                                    <%= emp.name.charAt(0).toUpperCase() %>
+                                </div>
+                            <% } %>
+                            <span><%= emp.name %></span>
+                        </td>
+
+                        <!-- Gender -->
+                        <td>
+                            <span class="gender <%= emp.gender.toLowerCase() %>">
+                                <%= emp.gender %>
+                            </span>
+                        </td>
+
+                        <!-- Department -->
+                        <td>
+                            <% if (Array.isArray(emp.department)) { %>
+                                <% emp.department.forEach((dept, index) => { %>
+                                    <span class="badge"><%= dept %></span><% if (index < emp.department.length - 1) { %>, <% } %>
+                                <% }) %>
+                            <% } else { %>
+                                <span class="badge"><%= emp.department %></span>
+                            <% } %>
+                        </td>
+
+                        <!-- Salary -->
+                        <td>₹ <%= (emp.salary || emp.basicSalary).toLocaleString() %></td>
+
+                        <!-- Tax -->
+                        <td>₹ <%= emp.tax.toFixed(2) %></td>
+
+                        <!-- Net Salary -->
+                        <td>₹ <%= emp.netSalary.toFixed(2) %></td>
+
+                        <!-- Start Date -->
+                        <td><%= emp.startDate || 'N/A' %></td>
+
+                        <!-- Actions -->
+                        <td class="actions">
+                            <a href="/edit/<%= emp.id %>" class="edit">✏</a>
+                            <a href="/delete/<%= emp.id %>" class="delete" onclick="return confirm('Are you sure you want to delete this employee?');">🗑</a>
+                        </td>
+
+                    </tr>
+                <% }) %>
+
             <% } %>
-
-            <% employees.forEach(emp => { %>
-                <tr>
-                    <td class="name-cell">
-                        <% if (emp.profileImage) { %>
-                            <% 
-                                const imageUrls = {
-                                    '1.png': 'https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face',
-                                    '2.png': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-                                    '3.png': 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-                                    '4.png': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
-                                };
-                                const profileUrl = imageUrls[emp.profileImage] || imageUrls['1.png'];
-                            %>
-                            <div class="profile-avatar" style="background: url('<%= profileUrl %>') center/cover;"></div>
-                        <% } else { %>
-                            <div class="avatar">
-                                <%= emp.name.charAt(0).toUpperCase() %>
-                            </div>
-                        <% } %>
-                        <span><%= emp.name %></span>
-                    </td>
-
-                    <td>
-                        <span class="gender <%= emp.gender.toLowerCase() %>">
-                            <%= emp.gender %>
-                        </span>
-                    </td>
-
-                    <td>
-                        <% if (Array.isArray(emp.department)) { %>
-                            <% emp.department.forEach(dept => { %>
-                                <span class="badge"><%= dept %></span>
-                            <% }) %>
-                        <% } else { %>
-                            <span class="badge"><%= emp.department %></span>
-                        <% } %>
-                    </td>
-
-                    <td>₹ <%= (emp.salary || emp.basicSalary).toLocaleString() %></td>
-                    <td>₹ <%= emp.tax.toFixed(2) %></td>
-                    <td>₹ <%= emp.netSalary.toFixed(2) %></td>
-
-                    <td class="actions">
-                        <a href="/edit/<%= emp.id %>" class="edit">✏</a>
-                        <a href="/delete/<%= emp.id %>" class="delete">🗑</a>
-                    </td>
-                </tr>
-            <% }) %>
 
             </tbody>
         </table>
