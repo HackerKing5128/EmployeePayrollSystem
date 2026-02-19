@@ -1,0 +1,7 @@
+<svg width="180" height="80" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 60V190H220V165H135V135H200V110H135V85H220V60H100Z" fill="#1A365D"/>
+      <path d="M230 60H300M230 85H300M290 60C290 60 305 125 240 125M255 125L300 190" stroke="#38B2AC" stroke-width="22" stroke-linecap="square"/>
+      <text x="200" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="1" fill="#1A365D">
+        EMPLOYEE <tspan fill="#38B2AC">PAYROLL</tspan>
+      </text>
+</svg>
