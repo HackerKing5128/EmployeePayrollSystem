@@ -91,14 +91,18 @@ app.post("/edit/:id", async (req, res) => {
       profileImage, 
       gender, 
       department, 
+<<<<<<< HEAD
       basicSalary,
+=======
+      salary, 
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
       day, 
       month, 
       year, 
       notes 
     } = req.body;
 
-    if (!name || Number(basicSalary) < 0) {
+    if (!name || Number(salary) < 0) {
       return res.status(400).send("Invalid input");
     }
 
@@ -109,6 +113,7 @@ app.post("/edit/:id", async (req, res) => {
         return {
           ...emp,
           name: name.trim(),
+<<<<<<< HEAD
           profileImage: profileImage || emp.profileImage,
           gender,
           department: Array.isArray(department) ? department : [department],
@@ -118,6 +123,14 @@ app.post("/edit/:id", async (req, res) => {
           netSalary: Number(basicSalary) * 0.88,
           startDate: day && month && year ? `${day}-${month}-${year}` : emp.startDate,
           notes: notes || emp.notes || ""
+=======
+          profileImage,
+          gender,
+          department: Array.isArray(department) ? department : [department],
+          basicSalary: Number(salary),
+          startDate: `${day}-${month}-${year}`,
+          notes: notes || ""
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
         };
       }
       return emp;

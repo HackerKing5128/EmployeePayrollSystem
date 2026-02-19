@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "id": 1700000000000,
     "name": "Rohit Sharma",
     "profileImage": "2.png",
@@ -27,5 +28,42 @@
     "netSalary": 88000,
     "startDate": "16-Sep-2022",
     "notes": "sfjnsjdn"
+=======
+    "id": 1771322041143,
+    "name": "Kirito",
+    "profileImage": "2.png",
+    "gender": "Male",
+    "department": [
+      "HR",
+      "Engineering"
+    ],
+    "basicSalary": 40000,
+    "startDate": "16-Nov-2023",
+    "notes": ""
+  },
+  {
+    "id": 1771351057674,
+    "name": "ash",
+    "profileImage": "4.png",
+    "gender": "Male",
+    "department": [
+      "HR"
+    ],
+    "basicSalary": 88899,
+    "startDate": "17-Jun-2025",
+    "notes": "new banda"
+  },
+  {
+    "id": 1771351865495,
+    "name": "Nitin Badmas",
+    "profileImage": "2.png",
+    "gender": "Male",
+    "department": [
+      "Engineering"
+    ],
+    "basicSalary": 56565,
+    "startDate": "13-Jan-2024",
+    "notes": "NIKEIRONMAN"
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
   }
 ]

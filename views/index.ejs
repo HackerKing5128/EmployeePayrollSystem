@@ -27,17 +27,34 @@
 </head>
 <body>
 
+<div class="logo-header">
+    <svg width="180" height="80" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 60V190H220V165H135V135H200V110H135V85H220V60H100Z" fill="#1A365D"/>
+      <path d="M230 60H300M230 85H300M290 60C290 60 305 125 240 125M255 125L300 190" stroke="#38B2AC" stroke-width="22" stroke-linecap="square"/>
+      <text x="200" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="1" fill="#1A365D">
+        EMPLOYEE <tspan fill="#38B2AC">PAYROLL</tspan>
+      </text>
+    </svg>
+</div>
+
 <div class="container">
 
     <div class="top-bar">
         <h1>Employee Details</h1>
-        <a href="/add" class="add-btn">+ Add User</a>
+        <div class="top-actions">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search employees..." onkeyup="searchEmployees()">
+                <span class="search-icon">🔍</span>
+            </div>
+            <a href="/add" class="add-btn">+ Add User</a>
+        </div>
     </div>
 
     <div class="card">
-        <table>
+        <table id="employeeTable">
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Department</th>
@@ -46,6 +63,14 @@
                     <th>Net Salary</th>
                     <th>Start Date</th>
                     <th>Actions</th>
+=======
+                    <th>NAME</th>
+                    <th>GENDER</th>
+                    <th>DEPARTMENT</th>
+                    <th>SALARY</th>
+                    <th>START DATE</th>
+                    <th>ACTIONS</th>
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
                 </tr>
             </thead>
 
@@ -53,7 +78,7 @@
 
             <% if (employees.length === 0) { %>
                 <tr>
-                    <td colspan="8" class="no-data">No Employees Found</td>
+                    <td colspan="6" class="no-data">No Employees Found</td>
                 </tr>
             <% } else { %>
 
@@ -63,6 +88,7 @@
                         <!-- Name + Avatar -->
                         <td class="name-cell">
                             <% if (emp.profileImage) { %>
+<<<<<<< HEAD
                                 <% 
                                     const imageUrls = {
                                         '1.png': 'https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face',
@@ -73,6 +99,9 @@
                                     const profileUrl = imageUrls[emp.profileImage] || imageUrls['1.png'];
                                 %>
                                 <div class="profile-avatar" style="background: url('<%= profileUrl %>') center/cover;"></div>
+=======
+                                <img src="https://i.pravatar.cc/150?img=<%= emp.profileImage.replace('.png', '') %>" alt="<%= emp.name %>" class="avatar-img">
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
                             <% } else { %>
                                 <div class="avatar">
                                     <%= emp.name.charAt(0).toUpperCase() %>
@@ -89,6 +118,7 @@
                         </td>
 
                         <!-- Department -->
+<<<<<<< HEAD
                         <td>
                             <% if (Array.isArray(emp.department)) { %>
                                 <% emp.department.forEach((dept, index) => { %>
@@ -107,14 +137,24 @@
 
                         <!-- Net Salary -->
                         <td>₹ <%= emp.netSalary.toFixed(2) %></td>
+=======
+                        <td class="department-cell">
+                            <% emp.department.forEach(dept => { %>
+                                <span class="dept-badge"><%= dept %></span>
+                            <% }) %>
+                        </td>
+
+                        <!-- Salary (Net Salary after tax deduction) -->
+                        <td class="salary-cell">₹ <%= emp.netSalary.toLocaleString('en-IN', {maximumFractionDigits: 0}) %></td>
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
 
                         <!-- Start Date -->
                         <td><%= emp.startDate || 'N/A' %></td>
 
                         <!-- Actions -->
                         <td class="actions">
-                            <a href="/edit/<%= emp.id %>" class="edit">✏</a>
-                            <a href="/delete/<%= emp.id %>" class="delete" onclick="return confirm('Are you sure you want to delete this employee?');">🗑</a>
+                            <a href="/edit/<%= emp.id %>" class="action-btn edit-btn" title="Edit">✏️</a>
+                            <a href="/delete/<%= emp.id %>" class="action-btn delete-btn" onclick="return confirm('Are you sure you want to delete this employee?');" title="Delete">🗑️</a>
                         </td>
 
                     </tr>
@@ -127,6 +167,29 @@
     </div>
 
 </div>
+
+<script>
+function searchEmployees() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const table = document.querySelector('table tbody');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const nameCell = row.getElementsByTagName('td')[0];
+        
+        if (nameCell) {
+            const textValue = nameCell.textContent || nameCell.innerText;
+            if (textValue.toLowerCase().indexOf(filter) > -1) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+}
+</script>
 
 </body>
 </html>
