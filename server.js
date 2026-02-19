@@ -75,7 +75,7 @@ app.post("/add", async (req, res) => {
   }
 });
 
-// EDIT EMPLOYEE
+// EDIT EMPLOYEE via ID
 app.get("/edit/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
