@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Employee</title>
+    <title>Employee Payroll Form</title>
     <link rel="stylesheet" href="/add.css">
 </head>
 <body>
@@ -33,22 +33,22 @@
             <div class="profile-images">
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="1.png" required>
-                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face');"></div>
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
 
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="2.png">
-                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face');"></div>
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
 
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="3.png">
-                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face');"></div>
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
 
                 <label class="profile-option">
                     <input type="radio" name="profileImage" value="4.png">
-                    <div class="profile-avatar" style="background:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face');"></div>
+                    <div class="profile-avatar" style="background: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face') center/cover;"></div>
                 </label>
             </div>
         </div>
@@ -76,57 +76,60 @@
 
         <!-- Salary -->
         <div class="form-group">
+<<<<<<< HEAD
+            <label>Salary *</label>
+            <input type="number" name="salary" placeholder="Enter salary amount" min="0" step="1000" required>
+=======
             <label>Basic Salary (₹) *</label>
             <input type="number" name="salary" placeholder="Enter salary" min="0" required>
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
         </div>
 
         <!-- Start Date -->
         <div class="form-group">
             <label>Start Date *</label>
-            <div class="radio-group">
-                <select name="day" required>
-                    <option value="">Day</option>
-                    <% for(let i = 1; i <= 31; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                    <% } %>
-                </select>
+            <select name="day" required>
+                <option value="">Day</option>
+                <% for(let i = 1; i <= 31; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
 
-                <select name="month" required>
-                    <option value="">Month</option>
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>Apr</option>
-                    <option>May</option>
-                    <option>Jun</option>
-                    <option>Jul</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
-                </select>
+            <select name="month" required>
+                <option value="">Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="Jun">Jun</option>
+                <option value="Jul">Jul</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+            </select>
 
-                <select name="year" required>
-                    <option value="">Year</option>
-                    <option>2023</option>
-                    <option>2024</option>
-                    <option>2025</option>
-                </select>
-            </div>
+            <select name="year" required>
+                <option value="">Year</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+            </select>
         </div>
 
         <!-- Notes -->
         <div class="form-group">
             <label>Notes</label>
-            <textarea name="notes"></textarea>
+            <textarea name="notes" rows="3" placeholder="Additional notes about the employee..."></textarea>
         </div>
 
-        <!-- Buttons -->
         <div class="button-group">
-            <a href="/" class="cancel-btn">Cancel</a>
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='/'">Cancel</button>
             <button type="reset" class="reset-btn">Reset</button>
+            <button type="submit" class="submit-btn">Submit</button>
         </div>
 
     </form>

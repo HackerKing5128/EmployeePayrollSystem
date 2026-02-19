@@ -213,12 +213,27 @@ button,
 .cancel-btn {
     background-color: #e74c3c;
     color: white;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .cancel-btn:hover {
     background-color: #c0392b;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.cancel-btn:active {
+    transform: translateY(0);
 }
 
 button:active {

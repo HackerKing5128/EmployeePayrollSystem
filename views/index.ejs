@@ -3,6 +3,27 @@
 <head>
     <title>Employee Payroll</title>
     <link rel="stylesheet" href="/dashboard.css">
+    <style>
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            border: 2px solid #ddd;
+        }
+        
+        .name-cell {
+            display: flex;
+            align-items: center;
+        }
+        
+        .badge {
+            margin-right: 5px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 
@@ -33,12 +54,23 @@
         <table id="employeeTable">
             <thead>
                 <tr>
+<<<<<<< HEAD
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Tax (12%)</th>
+                    <th>Net Salary</th>
+                    <th>Start Date</th>
+                    <th>Actions</th>
+=======
                     <th>NAME</th>
                     <th>GENDER</th>
                     <th>DEPARTMENT</th>
                     <th>SALARY</th>
                     <th>START DATE</th>
                     <th>ACTIONS</th>
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
                 </tr>
             </thead>
 
@@ -56,7 +88,20 @@
                         <!-- Name + Avatar -->
                         <td class="name-cell">
                             <% if (emp.profileImage) { %>
+<<<<<<< HEAD
+                                <% 
+                                    const imageUrls = {
+                                        '1.png': 'https://images.unsplash.com/photo-1494790108755-2616c669e297?w=100&h=100&fit=crop&crop=face',
+                                        '2.png': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+                                        '3.png': 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+                                        '4.png': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+                                    };
+                                    const profileUrl = imageUrls[emp.profileImage] || imageUrls['1.png'];
+                                %>
+                                <div class="profile-avatar" style="background: url('<%= profileUrl %>') center/cover;"></div>
+=======
                                 <img src="https://i.pravatar.cc/150?img=<%= emp.profileImage.replace('.png', '') %>" alt="<%= emp.name %>" class="avatar-img">
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
                             <% } else { %>
                                 <div class="avatar">
                                     <%= emp.name.charAt(0).toUpperCase() %>
@@ -73,6 +118,26 @@
                         </td>
 
                         <!-- Department -->
+<<<<<<< HEAD
+                        <td>
+                            <% if (Array.isArray(emp.department)) { %>
+                                <% emp.department.forEach((dept, index) => { %>
+                                    <span class="badge"><%= dept %></span><% if (index < emp.department.length - 1) { %>, <% } %>
+                                <% }) %>
+                            <% } else { %>
+                                <span class="badge"><%= emp.department %></span>
+                            <% } %>
+                        </td>
+
+                        <!-- Salary -->
+                        <td>₹ <%= (emp.salary || emp.basicSalary).toLocaleString() %></td>
+
+                        <!-- Tax -->
+                        <td>₹ <%= emp.tax.toFixed(2) %></td>
+
+                        <!-- Net Salary -->
+                        <td>₹ <%= emp.netSalary.toFixed(2) %></td>
+=======
                         <td class="department-cell">
                             <% emp.department.forEach(dept => { %>
                                 <span class="dept-badge"><%= dept %></span>
@@ -81,9 +146,10 @@
 
                         <!-- Salary (Net Salary after tax deduction) -->
                         <td class="salary-cell">₹ <%= emp.netSalary.toLocaleString('en-IN', {maximumFractionDigits: 0}) %></td>
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
 
                         <!-- Start Date -->
-                        <td><%= emp.startDate %></td>
+                        <td><%= emp.startDate || 'N/A' %></td>
 
                         <!-- Actions -->
                         <td class="actions">

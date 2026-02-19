@@ -1,5 +1,34 @@
 [
   {
+<<<<<<< HEAD
+    "id": 1700000000000,
+    "name": "Rohit Sharma",
+    "profileImage": "2.png",
+    "gender": "Male",
+    "department": [
+      "HR"
+    ],
+    "salary": 50000,
+    "basicSalary": 50000,
+    "tax": 6000,
+    "netSalary": 44000,
+    "startDate": "15-Sep-2023"
+  },
+  {
+    "id": 1771478287537,
+    "name": "Brajdeep pistol lover",
+    "profileImage": "3.png",
+    "gender": "Female",
+    "department": [
+      "Others"
+    ],
+    "salary": 100000,
+    "basicSalary": 100000,
+    "tax": 12000,
+    "netSalary": 88000,
+    "startDate": "16-Sep-2022",
+    "notes": "sfjnsjdn"
+=======
     "id": 1771322041143,
     "name": "Kirito",
     "profileImage": "2.png",
@@ -35,5 +64,6 @@
     "basicSalary": 56565,
     "startDate": "13-Jan-2024",
     "notes": "NIKEIRONMAN"
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
   }
 ]

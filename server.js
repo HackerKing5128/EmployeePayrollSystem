@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
 
     // Dynamic tax calculation
     const processedEmployees = employees.map(emp => {
-      const tax = emp.basicSalary * 0.10;
+      const tax = emp.basicSalary * 0.12;
       const netSalary = emp.basicSalary - tax;
       return { ...emp, tax, netSalary };
     });
@@ -35,32 +35,24 @@ app.get("/add", (req, res) => {
 
 app.post("/add", async (req, res) => {
   try {
-    const {
-      name,
-      profileImage,
-      gender,
-      department,
-      salary,
-      day,
-      month,
-      year,
-      notes
-    } = req.body;
-
-    // Validation (Must-Have)
-    if (!name || !gender || !salary || Number(salary) < 0) {
-      return res.status(400).send("Invalid input data");
+    const { name, profileImage, gender, department, salary, day, month, year, notes } = req.body;
+    
+    if (!name || !gender || !salary || !day || !month || !year) {
+      return res.status(400).send("All required fields must be filled");
     }
-
+    
     const employees = await readEmployees();
 
     const newEmployee = {
       id: Date.now(),
       name: name.trim(),
-      profileImage,
+      profileImage: profileImage || '1.png',
       gender,
       department: Array.isArray(department) ? department : [department],
+      salary: Number(salary),
       basicSalary: Number(salary),
+      tax: Number(salary) * 0.12,
+      netSalary: Number(salary) * 0.88,
       startDate: `${day}-${month}-${year}`,
       notes: notes || ""
     };
@@ -99,7 +91,11 @@ app.post("/edit/:id", async (req, res) => {
       profileImage, 
       gender, 
       department, 
+<<<<<<< HEAD
+      basicSalary,
+=======
       salary, 
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
       day, 
       month, 
       year, 
@@ -117,12 +113,24 @@ app.post("/edit/:id", async (req, res) => {
         return {
           ...emp,
           name: name.trim(),
+<<<<<<< HEAD
+          profileImage: profileImage || emp.profileImage,
+          gender,
+          department: Array.isArray(department) ? department : [department],
+          salary: Number(basicSalary),
+          basicSalary: Number(basicSalary),
+          tax: Number(basicSalary) * 0.12,
+          netSalary: Number(basicSalary) * 0.88,
+          startDate: day && month && year ? `${day}-${month}-${year}` : emp.startDate,
+          notes: notes || emp.notes || ""
+=======
           profileImage,
           gender,
           department: Array.isArray(department) ? department : [department],
           basicSalary: Number(salary),
           startDate: `${day}-${month}-${year}`,
           notes: notes || ""
+>>>>>>> b6c4a3ef469954ce659fecee00f9ad58de9cfaec
         };
       }
       return emp;
@@ -136,7 +144,7 @@ app.post("/edit/:id", async (req, res) => {
   }
 });
 
-// DELETE
+// Delete Employee
 app.get("/delete/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -156,10 +164,9 @@ async function startServer() {
   const employees = await readEmployees();
   console.log("Employee Data Loaded:");
   console.log(employees);
-
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
 }
 
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
 startServer();
