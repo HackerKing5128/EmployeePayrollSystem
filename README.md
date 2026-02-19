@@ -1,5 +1,4 @@
-# EmployeePayrollSystem
-BridgeLabz Full Stack Backend in Node.js mini project
+
 <div align="center" style="background:mintcream; border-radius: 15px; border: 1px solid #ddd; color:black;">
     <svg width="180" height="80" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M100 60V190H220V165H135V135H200V110H135V85H220V60H100Z" fill="#1A365D"/>
@@ -143,3 +142,5 @@ This project was developed as part of the BridgeLabz Full Stack Backend curricul
 - Server-side rendering using EJS
 - CRUD operations
 - Collaborative Git workflow
+
+---
